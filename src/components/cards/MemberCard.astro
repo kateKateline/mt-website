@@ -1,0 +1,13 @@
+---
+const { name, role } = Astro.props;
+const initials = (name || "").split(" ").map((n: string) => n[0]).join("").slice(0,2).toUpperCase();
+---
+<div class="card fade-up">
+  <div class="flex items-start gap-4">
+    <div class="avatar float">{initials}</div>
+    <div>
+      <h4>{name}</h4>
+      <p>{role}</p>
+    </div>
+  </div>
+</div>

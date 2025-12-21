@@ -1,0 +1,12 @@
+---
+const { name, description } = Astro.props;
+---
+<div class="card card-outline fade-up">
+  <div class="flex items-start gap-4">
+    <div class="avatar emoji">📦</div>
+    <div>
+      <h4>{name}</h4>
+      <p>{description}</p>
+    </div>
+  </div>
+</div>

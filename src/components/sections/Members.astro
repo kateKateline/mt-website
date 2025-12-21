@@ -1,0 +1,25 @@
+---
+import MemberCard from "@/components/cards/MemberCard.astro";
+
+const members = [
+  { name: "Alice", role: "Frontend Developer" },
+  { name: "Bob", role: "Backend Developer" },
+  { name: "Charlie", role: "Fullstack Developer" },
+];
+---
+
+<section
+  id="members"
+  class="relative bg-black pt-32 pb-24"
+>
+  <div class="container">
+    <h3 class="section-title">Team Members</h3>
+
+    <div class="grid">
+      {members.map((member) => (
+        <MemberCard name={member.name} role={member.role} />
+      ))}
+    </div>
+  </div>
+</section>
+

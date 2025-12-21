@@ -1,0 +1,21 @@
+---
+import RepoCard from "@/components/cards/RepoCard.astro";
+
+const repos = [
+  { name: "project-alpha", description: "Main project repository" },
+  { name: "design-system", description: "UI components and styles" },
+  { name: "api-service", description: "Backend service repository" },
+];
+---
+
+<section id="repos" class="section section-dark">
+  <div class="container">
+    <h3 class="section-title">Top Repositories</h3>
+
+    <div class="grid">
+      {repos.map((repo) => (
+        <RepoCard name={repo.name} description={repo.description} />
+      ))}
+    </div>
+  </div>
+</section>
