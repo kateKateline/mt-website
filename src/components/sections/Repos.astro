@@ -2,19 +2,71 @@
 import RepoCard from "@/components/cards/RepoCard.astro";
 
 const repos = [
-  { name: "project-alpha", description: "Main project repository" },
-  { name: "design-system", description: "UI components and styles" },
-  { name: "api-service", description: "Backend service repository" },
+  {
+    name: "mt-website",
+    description: "Main marketing website built with Astro and Tailwind CSS.",
+    tech: ["Astro", "Tailwind", "SPA"],
+    stars: 128,
+  },
+  {
+    name: "design-system",
+    description: "Reusable UI components and design tokens for internal products.",
+    tech: ["UI", "CSS", "Components"],
+    stars: 86,
+  },
+  {
+    name: "api-service",
+    description: "RESTful API service handling authentication and core business logic.",
+    tech: ["Node.js", "REST", "PostgreSQL"],
+    stars: 142,
+  },
+  {
+    name: "auth-module",
+    description: "Authentication and authorization layer with JWT and RBAC.",
+    tech: ["Auth", "JWT", "Security"],
+    stars: 64,
+  },
+  {
+    name: "data-pipeline",
+    description: "ETL pipeline for processing and aggregating analytics data.",
+    tech: ["ETL", "Data", "Queue"],
+    stars: 51,
+  },
+  {
+    name: "cli-tools",
+    description: "Internal CLI tools to improve developer productivity.",
+    tech: ["CLI", "Node.js", "DX"],
+    stars: 39,
+  },
 ];
 ---
 
-<section id="repos" class="section section-dark">
-  <div class="container">
-    <h3 class="section-title">Top Repositories</h3>
+<section
+  id="repos"
+  class="relative bg-black py-24"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- TITLE -->
+    <h3 class="text-3xl md:text-4xl font-semibold text-white mb-4">
+      Top Project
+    </h3>
 
-    <div class="grid">
+    <p class="max-w-2xl text-white/60 mb-12">
+      A selection of core repositories that power our products and internal tooling.
+    </p>
+
+    <!-- GRID -->
+    <div
+      class="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-3
+        gap-6
+      "
+    >
       {repos.map((repo) => (
-        <RepoCard name={repo.name} description={repo.description} />
+        <RepoCard {...repo} />
       ))}
     </div>
   </div>
