@@ -18,7 +18,7 @@
 }
 
 @layer components {
-	.section { @apply py-20; }
+	.section { @apply py-5; }
 	.section-dark { @apply bg-black text-white; }
 	.container { @apply max-w-7xl mx-auto px-6; }
 	.section-title { @apply text-2xl font-semibold mb-8 text-white/90; }
@@ -50,7 +50,57 @@
 
 @layer utilities {
 	.glass { backdrop-filter: blur(6px); }
+
+ @keyframes member-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-member-scroll {
+    animation: member-scroll 55s linear infinite;
+    will-change: transform;
+    padding-inline: 0.5rem;
+  }
+
+  .animate-member-scroll > * {
+    flex-shrink: 0;
+  }
 }
+
+/* ================================
+   Custom Scrollbar (Black & White)
+   ================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) black;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
 
 /* =========================
    NAVBAR CORE
