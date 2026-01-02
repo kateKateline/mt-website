@@ -1,5 +1,5 @@
 ---
-const { name, role, description = "", github = "#" } = Astro.props;
+const { name, role, github = "#", avatar } = Astro.props;
 const initials = (name || "")
   .split(" ")
   .map((n: string) => n[0])
@@ -8,31 +8,22 @@ const initials = (name || "")
   .toUpperCase();
 ---
 
-<div class="min-w-75 h-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 flex flex-col text-white transition-colors duration-300 hover:bg-white/8">
-  <!-- HEADER -->
-  <div class="flex items-center gap-4">
-    <div class="w-11 h-11 rounded-full bg-white text-black font-medium flex items-center justify-center shrink-0">
-      {initials}
-    </div>
+<div class="w-75 min-w-75 max-w-75 h-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 flex flex-col text-white transition-colors duration-300 hover:bg-white/8">
+  <div class="flex items-center gap-4 min-w-0">
+    {avatar ? (
+      <img src={avatar} alt={`${name} avatar`} class="w-11 h-11 rounded-full object-cover shrink-0" />
+    ) : (
+      <div class="w-11 h-11 rounded-full bg-white text-black font-medium flex items-center justify-center shrink-0">
+        {initials}
+      </div>
+    )}
 
-    <div>
-      <h4 class="text-sm font-semibold leading-tight">
-        {name}
-      </h4>
-      <p class="text-xs text-white/55">
-        {role}
-      </p>
+    <div class="min-w-0 flex-1">
+      <h4 class="text-sm font-semibold leading-tight truncate">{name}</h4>
+      <p class="text-xs text-white/55 truncate">{role}</p>
     </div>
   </div>
 
-  <!-- BODY -->
-  {description && (
-    <p class="mt-4 text-sm text-white/65 leading-relaxed line-clamp-3">
-      {description}
-    </p>
-  )}
-
-  <!-- FOOTER -->
   <div class="mt-auto pt-5">
     <a href={github} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-white/70 hover:text-white transition">
       View GitHub →

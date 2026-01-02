@@ -18,6 +18,11 @@
 	100% { transform: translateY(0); }
 }
 
+@keyframes pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.5; }
+}
+
 @layer components {
 	.section { @apply py-5; }
 	.section-dark { @apply bg-black text-white; }

@@ -1,16 +1,11 @@
 ---
 import MemberCard from "@/components/cards/MemberCard.astro";
+import { fetchMembers } from "@/lib/github";
+import { MEMBER_USERNAMES, MEMBER_ROLES } from "@/lib/members";
 
-const members = [
-  { name: "Alice", role: "Frontend Developer", description: "Focuses on React and UI/UX.", github: "https://github.com/alice" },
-  { name: "Bob", role: "Backend Developer", description: "Builds APIs and services.", github: "https://github.com/bob" },
-  { name: "Charlie", role: "Fullstack Developer", description: "Works across frontend and backend.", github: "https://github.com/charlie" },
-  { name: "Diana", role: "UI Designer", description: "Designs interfaces and prototyping.", github: "https://github.com/diana" },
-  { name: "Evan", role: "DevOps Engineer", description: "CI/CD and infrastructure.", github: "https://github.com/evan" },
-  { name: "Fiona", role: "Project Manager", description: "Coordinates roadmap and teams.", github: "https://github.com/fiona" },
-];
+const members = await fetchMembers(MEMBER_USERNAMES, MEMBER_ROLES);
 
-// duplikasi supaya loop mulus
+// duplicate for smooth marquee
 const loopMembers = [...members, ...members];
 ---
 
@@ -35,12 +30,12 @@ const loopMembers = [...members, ...members];
 
   <div class="flex gap-8 w-max animate-member-scroll py-4">
       {loopMembers.map((member) => (
-        <MemberCard
-          name={member.name}
-          role={member.role}
-          description={member.description}
-          github={member.github}
-        />
+<MemberCard
+  name={member.name}
+  role={member.role}
+  github={member.url}
+  avatar={member.avatarUrl}
+/>
       ))}
     </div>
   </div>
