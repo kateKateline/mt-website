@@ -5,14 +5,11 @@ import { MEMBER_USERNAMES, MEMBER_ROLES } from "@/lib/members";
 
 const members = await fetchMembers(MEMBER_USERNAMES, MEMBER_ROLES);
 
-// duplicate for smooth marquee
+// marquee loop
 const loopMembers = [...members, ...members];
 ---
 
-<section
-  id="members"
-  class="relative bg-black py-24"
->
+<section id="members" class="relative bg-black py-24">
   <!-- TITLE -->
   <div class="max-w-7xl mx-auto px-6">
     <h3 class="text-center text-3xl md:text-4xl font-semibold text-white mb-16">
@@ -21,23 +18,30 @@ const loopMembers = [...members, ...members];
   </div>
 
   <!-- MARQUEE WRAPPER (BATAS MERAH) -->
-<div class="relative max-w-7xl mx-auto px-6 overflow-hidden">
-  <!-- left fade -->
-  <div class="pointer-events-none absolute left-0 top-0 h-full w-14 bg-linear-to-r from-black to-transparent z-10"></div>
+  <div class="relative max-w-7xl mx-auto px-6 overflow-hidden">
+    <!-- left fade -->
+    <div
+      class="pointer-events-none absolute left-0 top-0 h-full w-14 bg-linear-to-r from-black to-transparent z-10"
+    >
+    </div>
 
-  <!-- right fade -->
-  <div class="pointer-events-none absolute right-0 top-0 h-full w-14 bg-linear-to-l from-black to-transparent z-10"></div>
+    <!-- right fade -->
+    <div
+      class="pointer-events-none absolute right-0 top-0 h-full w-14 bg-linear-to-l from-black to-transparent z-10"
+    >
+    </div>
 
-  <div class="flex gap-8 w-max animate-member-scroll py-4">
-      {loopMembers.map((member) => (
-<MemberCard
-  name={member.name}
-  role={member.role}
-  github={member.url}
-  avatar={member.avatarUrl}
-/>
-      ))}
+    <div class="flex gap-8 w-max animate-member-scroll py-4">
+      {
+        loopMembers.map((member) => (
+          <MemberCard
+            name={member.name}
+            role={member.role}
+            github={member.url}
+            avatar={member.avatarUrl}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
-
